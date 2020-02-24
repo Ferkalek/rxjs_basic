@@ -1,0 +1,31 @@
+{
+  "name": "rxjs_basic",
+  "version": "1.0.0",
+  "description": "title",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ferkalek/rxjs_basic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ferkalek/rxjs_basic/issues"
+  },
+  "homepage": "https://github.com/Ferkalek/rxjs_basic#readme",
+  "dependencies": {
+    "rxjs": "^6.5.4",
+    "webpack-cli": "^3.3.11"
+  },
+  "devDependencies": {
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.8.2",
+    "webpack": "^4.41.6",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
