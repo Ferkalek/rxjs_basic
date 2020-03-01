@@ -1,0 +1,13 @@
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { addItem } from './additional/add-item';
+
+Observable.create((observer: any) => {
+    observer.next('Some text');
+    observer.next('Some text 2');
+    observer.next('Some text 4');
+}).pipe(
+    map(
+        (d: any) => d.toUpperCase()
+    )
+).subscribe((d: any) => addItem(d));

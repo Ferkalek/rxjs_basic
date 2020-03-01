@@ -1,0 +1,11 @@
+import { from } from 'rxjs';
+import { pluck } from 'rxjs/operators';
+import { addItem } from './additional/add-item';
+
+from([
+    {name: 'Gary', age: 21},
+    {name: 'Lizy', age: 32},
+    {name: 'Katy', age: 28},
+]).pipe(
+    pluck('name')
+).subscribe((d: any) => addItem(d));

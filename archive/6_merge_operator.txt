@@ -1,0 +1,18 @@
+import { Observable, merge } from 'rxjs';
+import { addItem } from './additional/add-item';
+
+let observable1 = Observable.create((observer: any) => {
+    observer.next('text 1 ');
+    observer.next('text 2 ');
+    observer.next('text 3 ');
+    observer.next('text 4 ');
+});
+
+let observable2 = Observable.create((observer: any) => {
+    observer.next('text - 5 ');
+    observer.next('text - 6 ');
+    observer.next('text - 7 ');
+});
+
+let newObservable = merge(observable1, observable2);
+newObservable.subscribe((d: any) => addItem(d));
