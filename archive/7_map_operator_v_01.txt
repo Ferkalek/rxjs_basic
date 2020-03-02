@@ -17,7 +17,9 @@ const observer = {
 let observable = interval(1000);
 
 let subscription = observable
-    .pipe(map((d: any) => d * 2))
+    .pipe(
+        map((d: any) => ' It is nev price ' + (d * 2) + ',00 USD')
+    )
     .subscribe(observer);
 
     setTimeout(() => subscription.unsubscribe(), 5000);
