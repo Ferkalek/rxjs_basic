@@ -1,4 +1,5 @@
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs';
+import { addItem } from './additional/add-item';
 
 let observable = Observable.create((observer: any) => {
     observer.next('Hi everyone!');
@@ -27,13 +28,5 @@ forUnsubscribe.add(secondObserver); // if we want unsubscribe from bougth subscr
 
 
 setTimeout(() => forUnsubscribe.unsubscribe(), 6001);
-
-// -----------------------------------------------------------
-function addItem(val: any) {
-    var node = document.createElement("li");
-    var textnode = document.createTextNode(val);
-    node.appendChild(textnode);
-    document.getElementById("output").appendChild(node);
-}
 
 document.getElementById("btn").addEventListener('click', () => secondObserver.unsubscribe());
