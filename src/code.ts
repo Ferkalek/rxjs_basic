@@ -1,26 +1,24 @@
-import { interval } from 'rxjs';
-import { filter } from 'rxjs/operators';
-import { addItem } from './additional/add-item';
+import { fromEvent } from 'rxjs';
+import { mergeMap, map } from 'rxjs/operators';
 
-const observer = {
-    next: function(value: any) {
-        addItem('NEXT: -- ' + value);
-    },
-    error: function(error: any) {
-        addItem('ERROR:' + error);
-    },
-    complete: function() {
-        addItem('COMPLETE');
-    },
-};
+const inp = document.getElementById('inp')
+const inp2 = document.getElementById('inp2')
+const result = document.getElementById('result');
 
-let observable = interval(1000);
+const observable1 = fromEvent(inp, 'input');
+const observable2 = fromEvent(inp2, 'input');
 
-let subscription = observable
-    .pipe(
-        // filter((d: any) => d % 2 == 0)
-        filter((d: any) => d >= 5)
-    )
-    .subscribe(observer);
-
-    setTimeout(() => subscription.unsubscribe(), 10001);
+observable1
+.pipe(
+    mergeMap((event1: any) => {
+        return observable2
+            .pipe(map(
+                (event2: any) => {
+                    return event2.target.value + ' ' + event1.target.value;
+                }
+            ))
+    })
+)
+.subscribe((data: any) => {
+    result.textContent = data;
+});

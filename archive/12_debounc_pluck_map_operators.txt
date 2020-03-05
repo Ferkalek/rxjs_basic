@@ -1,0 +1,15 @@
+import { fromEvent } from 'rxjs';
+import { debounceTime, map, pluck } from 'rxjs/operators';
+import { addItem } from './additional/add-item';
+
+const inp = document.getElementById('inp')
+
+const observable = fromEvent(inp, 'input');
+
+observable
+.pipe(
+    // map((event: any) => event.target.value),
+    pluck('target', 'value'),
+    debounceTime(300)
+)
+.subscribe((val: any) => addItem('NEXT: -- ' + val));

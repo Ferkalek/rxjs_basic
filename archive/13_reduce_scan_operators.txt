@@ -1,0 +1,18 @@
+import { of } from 'rxjs';
+import { reduce, scan } from 'rxjs/operators';
+import { addItem } from './additional/add-item';
+
+const inp = document.getElementById('inp')
+
+const observable = of(1, 2, 3, 4, 5);
+
+observable
+.pipe(
+    // reduce((total, currentVal) => {
+    //     return total + currentVal;
+    // }, 0),
+    scan((total, currentVal) => {
+        return total + currentVal;
+    }, 0)
+)
+.subscribe((val: any) => addItem('NEXT: -- ' + val));
